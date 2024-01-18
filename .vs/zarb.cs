@@ -31,6 +31,25 @@ class Calculator
         }
     }
 
+    static double reCalcule(double operande1, double operande2, string operateur)
+    {
+        // Service de calcul
+        switch (operateur)
+        {
+            case "+":
+                return operande1 + operande2;
+            case "-":
+                return operande1 - operande2;
+            case "*":
+                return operande1 * operande2;
+            case "/":
+                return operande1 / operande2;
+            // Ajouter d'autres opérations au besoin (multiplication, division, etc.)
+            default:
+                throw new ArgumentException($"Opérateur non pris en charge : {operateur}");
+        }
+    }
+
     static double Calcule(double operande1, double operande2, string operateur)
     {
         // Service de calcul
@@ -91,6 +110,7 @@ class Calculator
                 stack.RemoveAt(stack.Count - 1); // Enlever l'avant-dernier élément (operand1)
 
                 double result = Calcule(operand1, operand2, token);
+                double result = reCalcule(operand1, operand2, token);
                 stack.Add(result);
             }
             else
